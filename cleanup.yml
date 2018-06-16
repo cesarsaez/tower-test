@@ -1,0 +1,16 @@
+---
+  - hosts: all
+    vars:
+      packages:
+        - httpd
+        - mariadb-server
+        - mariadb
+
+    tasks:
+      - name: Uninstall tipical plackages
+        yum:
+          name: "{{ item }}"
+          state: absent
+        with_items: "{{ packages }}"
+     
+
